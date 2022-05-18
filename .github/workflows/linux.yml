@@ -46,6 +46,11 @@ jobs:
           npm install --build-from-source
 
       - name: Test
-        run: cd node-hid && npm test
+        run: |
+          cd node-hid
+          npm test
+          ls -alrth build/Release/
+          file build/Release/*node
+          
 
 # tests again
