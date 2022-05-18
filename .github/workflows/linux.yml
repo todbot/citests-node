@@ -40,3 +40,5 @@ jobs:
 
     - name: Test
       run: cd node-hid && npm test
+
+# tests again
