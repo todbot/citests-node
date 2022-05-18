@@ -41,6 +41,7 @@ jobs:
 
           install: |
             apt update
+            apt install -y git
             apt install -y pkg-config libudev-dev libusb-1.0-0-dev
 
           run: |
