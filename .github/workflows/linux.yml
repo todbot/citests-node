@@ -28,8 +28,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: install aarch64-linux-gnu
+        if: ${{ matrix.platform == 'linux-arm64' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+
       - name: setup prerequisites (linux)
         run: |
+          uname -a
           sudo apt update
           sudo apt install pkg-config libudev-dev libusb-1.0-0-dev
 
@@ -51,6 +58,6 @@ jobs:
           npm test
           ls -alrth build/Release/
           file build/Release/*node
-          
+
 
 # tests again
