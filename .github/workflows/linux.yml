@@ -41,7 +41,7 @@ jobs:
 
           install: |
             apt update
-            apt install pkg-config libudev-dev libusb-1.0-0-dev
+            apt install -y pkg-config libudev-dev libusb-1.0-0-dev
 
           run: |
             git clone https://github.com/node-hid/node-hid
