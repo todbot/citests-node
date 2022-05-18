@@ -43,6 +43,9 @@ jobs:
             apt update
             apt install -y git
             apt install -y pkg-config libudev-dev libusb-1.0-0-dev
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+            nvm install v16
+            nvm use v16
 
           run: |
             git clone https://github.com/node-hid/node-hid
