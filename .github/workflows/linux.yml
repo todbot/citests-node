@@ -50,6 +50,8 @@ jobs:
             nvm use v16
 
           run: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             git clone https://github.com/node-hid/node-hid
             cd node-hid
             npm run prepublishOnly
