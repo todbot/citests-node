@@ -40,9 +40,8 @@ jobs:
           distro: ${{ matrix.distro }}
 
           install: |
-            uname -a
-            sudo apt update
-            sudo apt install pkg-config libudev-dev libusb-1.0-0-dev
+            apt update
+            apt install pkg-config libudev-dev libusb-1.0-0-dev
 
           run: |
             git clone https://github.com/node-hid/node-hid
