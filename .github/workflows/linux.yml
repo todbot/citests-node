@@ -67,7 +67,7 @@ jobs:
           file build/Release/*node
 
       - name: Publish Test
-        if: (github.event_name == 'release' && github.event.action == 'created'
+        if: (github.event_name == 'release' && github.event.action == 'created')
         run: |
           echo "This would be where the publishing happens"
 
