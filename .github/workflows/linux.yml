@@ -5,12 +5,10 @@ name: linux
 
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
   release:
-    types:
-      - created
+    types: [ created ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,6 +33,11 @@ jobs:
 #    runs-on: ${{ matrix.os }}
 
     steps:
+      - name: Publish Test
+        if: (github.event_name == 'release')
+        run: |
+          echo "This would be where the publishing happens"
+
       - uses: actions/checkout@v2
       - uses: uraimo/run-on-arch-action@v2
         with:
@@ -42,6 +45,7 @@ jobs:
           distro: ${{ matrix.distro }}
 
           install: |
+            echo "event name: ${{ github.event_name }}"
             apt update
             apt install -y git curl python3
             apt install -y pkg-config libudev-dev libusb-1.0-0-dev
@@ -66,10 +70,6 @@ jobs:
           ls -alrth build/Release/
           file build/Release/*node
 
-      - name: Publish Test
-        if: (github.event_name == 'release' && github.event.action == 'created')
-        run: |
-          echo "This would be where the publishing happens"
 
 #      - name: install aarch64-linux-gnu
 #        if: ${{ matrix.platform == 'linux-arm64' }}
